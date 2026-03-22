@@ -168,4 +168,3 @@ class TestImageValidator:
         assert mod.is_valid_image("photo.gif") is True
         assert mod.is_valid_image("document.txt") is False
         assert mod.is_valid_image("archive.zip") is False
-        
