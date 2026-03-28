@@ -35,6 +35,12 @@ jobs:
           echo "======================================"
 
           BUCKET_NAME="cc-images-${{ github.event.inputs.pitt_id }}"
+          
+          # Debug: Who am I?
+          aws sts get-caller-identity
+          
+          # Debug: Can I see the bucket without silencing errors?
+          aws s3 ls "s3://$BUCKET_NAME" --region us-east-1
 
           if aws s3 ls "s3://$BUCKET_NAME" 2>/dev/null; then
             echo "PASS: s3 bucket exists: $BUCKET_NAME"
