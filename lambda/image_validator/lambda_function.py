@@ -53,7 +53,7 @@ def lambda_handler(event, context):
 
             if valid:
                 print(f"[VALID] {key} is a valid image file") # todo: if valid, print the [VALID] message
-                filename = os.path.splitext(key.split('/')[-1])[0]  # todo: get the filename from the key (e.g. "uploads/test.jpg" -> "test.jpg")
+                filename = key.split('/')[-1]  # todo: get the filename from the key (e.g. "uploads/test.jpg" -> "test.jpg")
                 s3.copy_object(Bucket=bucket, Key=f"processed/valid/{filename}", CopySource={'Bucket': bucket, 'Key': key}) # todo: copy the object to processed/valid/{filename}
             else:
                 print(f"[INVALID] {key} is not a valid image type") # todo: if invalid, print the [INVALID] message
